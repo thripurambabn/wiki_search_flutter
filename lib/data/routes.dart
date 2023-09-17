@@ -23,13 +23,14 @@ class AppRoutes {
 
   static Route? onGeneratedRoutes(RouteSettings route) {
     switch (route.name) {
-
       case "/home":
         return getMaterialRoute(
-          const HomeScreen(),);
+          const HomeScreen(),
+        );
 
       case "/search":
-        final WikiSearchArguments? args = route.arguments as WikiSearchArguments?;
+        final WikiSearchArguments? args =
+            route.arguments as WikiSearchArguments?;
         return getMaterialRoute(
           BlocProvider(
             create: (context) => SearchcacheCubit(),
@@ -55,7 +56,6 @@ class AppRoutes {
     return null;
   }
 }
-
 
 class WikiSearchArguments {
   final String searchKeyword;

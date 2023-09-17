@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class NoInternetWidget extends StatelessWidget {
   final Function callback;
 
-  const NoInternetWidget({super.key, 
+  const NoInternetWidget({
+    super.key,
     required this.callback,
   });
 
@@ -47,7 +49,7 @@ class NoInternetWidget extends StatelessWidget {
                       const SizedBox(width: 30.0),
                       SizedBox(
                         width: 1.sw - 170,
-                        child:  Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -65,19 +67,17 @@ class NoInternetWidget extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  width: 1.sw ,
+                  width: 1.sw,
                   height: 1,
                   color: const Color(0xff444647),
                 ),
                 _getButtonTile(
                   "Turn on Wi-Fi / mobile data",
                   Icons.settings,
-                  () {
-                 //   AppSettings.openAppSettings();
-                  },
+                  () {},
                 ),
                 Container(
-                  width:1.sw ,
+                  width: 1.sw,
                   height: 1,
                   color: const Color(0xff444647),
                 ),
@@ -97,10 +97,9 @@ class NoInternetWidget extends StatelessWidget {
   }
 }
 
-Widget _getButtonTile(
-        String text, IconData iconData, Function callback) =>
+Widget _getButtonTile(String text, IconData iconData, Function callback) =>
     SizedBox(
-      width: 1.sw ,
+      width: 1.sw,
       height: 50.0,
       child: MaterialButton(
         highlightColor: const Color(0xff1D2328),
@@ -117,9 +116,6 @@ Widget _getButtonTile(
             const SizedBox(width: 10.0),
             Text(
               text,
-              // style: GoogleFonts.montserrat(
-              //   color: Color(0xff737575),
-              // ),
             )
           ],
         ),

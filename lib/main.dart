@@ -13,21 +13,18 @@ void main() async {
     ..init(directory.path)
     ..registerAdapter(WikiPageAdapter());
   await Hive.openBox("search-cache");
-  runApp(const ScreenUtilInit(
-      ensureScreenSize: true,
-      child: WikiSearch()));
+  runApp(const ScreenUtilInit(ensureScreenSize: true, child: WikiSearch()));
 }
 
 class WikiSearch extends StatelessWidget {
   const WikiSearch({Key? key}) : super(key: key);
-  
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRoutes.onGeneratedRoutes,
-      initialRoute:  "/home",
+      initialRoute: "/home",
     );
   }
 }

@@ -42,10 +42,6 @@ class _SearchResultsState extends State<SearchResults> {
     final cubit = BlocProvider.of<WikisearchCubit>(context);
     return WillPopScope(
       onWillPop: () {
-        // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        //   statusBarColor: AppTheme.primaryColor,
-        //   systemNavigationBarColor: AppTheme.primaryColor,
-        // ));
         Navigator.pushReplacementNamed(context, "/home");
         return Future.value(true);
       },
@@ -53,7 +49,7 @@ class _SearchResultsState extends State<SearchResults> {
         backgroundColor: Colors.amberAccent[100],
         body: BlocBuilder<WikisearchCubit, WikisearchState>(
           builder: (context, state) => SizedBox(
-            height:1.sh,
+            height: 1.sh,
             width: 1.sw,
             child: Column(
               children: [
@@ -63,19 +59,19 @@ class _SearchResultsState extends State<SearchResults> {
                 ),
                 Expanded(
                   child: Scrollbar(
-                    child: NotificationListener<
-                        OverscrollIndicatorNotification>(
+                    child:
+                        NotificationListener<OverscrollIndicatorNotification>(
                       onNotification: (overscroll) {
                         overscroll.disallowIndicator();
                         return true;
                       },
                       child: state is WikisearchError
-                          ? _getBodyWidget( cubit, state)
+                          ? _getBodyWidget(cubit, state)
                           : RefreshIndicator(
                               onRefresh: () {
                                 return _refreshfetchWikiPages(cubit);
                               },
-                              child: _getBodyWidget( cubit, state),
+                              child: _getBodyWidget(cubit, state),
                             ),
                     ),
                   ),
@@ -88,7 +84,7 @@ class _SearchResultsState extends State<SearchResults> {
     );
   }
 
-  _getBodyWidget( WikisearchCubit cubit, WikisearchState state) {
+  _getBodyWidget(WikisearchCubit cubit, WikisearchState state) {
     return SizedBox(
       height: 1.sh - 188,
       width: 1.sw,
@@ -96,21 +92,20 @@ class _SearchResultsState extends State<SearchResults> {
         physics: const ClampingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
         ),
-        child: _getSearchResultsWidget( cubit, state),
+        child: _getSearchResultsWidget(cubit, state),
       ),
     );
   }
 
-  _getSearchResultsWidget(
-       WikisearchCubit cubit, WikisearchState state) {
+  _getSearchResultsWidget(WikisearchCubit cubit, WikisearchState state) {
     if (state is WikisearchLoaded) {
       return Container(
         color: Colors.amberAccent[100],
         child: Column(
           children: [
-             SizedBox(height: 9.0.h),
+            SizedBox(height: 9.0.h),
             for (int page = 0; page < cubit.pages.length; page++)
-              WikiTile( page: cubit.pages[page])
+              WikiTile(page: cubit.pages[page])
           ],
         ),
       );

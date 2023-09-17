@@ -1,5 +1,3 @@
-
-
 import 'package:freo_flutter_assignment/search_screen/repositories/services/wiki_network_service.dart';
 
 import '../../home_page/models/wiki_search_result/wiki_search_result.dart';

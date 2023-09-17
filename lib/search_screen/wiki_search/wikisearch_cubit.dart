@@ -35,7 +35,6 @@ class WikisearchCubit extends Cubit<WikisearchState> {
           "Failed to refresh, please check your network and try again!",
         );
       } else {
-       
         bool cacheAvailable = await getLocalCache(searchKeyword);
         if (cacheAvailable) {
           emit(WikisearchLoaded());
@@ -73,6 +72,7 @@ class WikisearchCubit extends Cubit<WikisearchState> {
     }
     await _box.put("articles", List.from(_articlesCache));
   }
+
   Future<bool> getLocalCache(String searchKeyword) async {
     List? articles = _box.get("articles");
     if (articles != null) {

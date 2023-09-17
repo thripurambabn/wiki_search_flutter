@@ -6,7 +6,8 @@ class SearchHistoryList extends StatelessWidget {
   final Queue<String> searchHistory;
   final Function callback;
 
-  const SearchHistoryList({super.key, 
+  const SearchHistoryList({
+    super.key,
     required this.searchHistory,
     required this.callback,
   });
@@ -19,7 +20,7 @@ class SearchHistoryList extends StatelessWidget {
         return true;
       },
       child: SingleChildScrollView(
-        physics:const ClampingScrollPhysics(
+        physics: const ClampingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
         ),
         child: Column(
@@ -28,24 +29,24 @@ class SearchHistoryList extends StatelessWidget {
               SizedBox(
                 height: 50.0,
                 child: MaterialButton(
-                  padding:
-                   const   EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 10.0, vertical: 10.0),
                   onPressed: () {
                     callback(searchHistory.elementAt(search));
                   },
                   child: Row(
                     children: [
-                     const Icon(Icons.history),
-                    const SizedBox(width: 30.0),
+                      const Icon(Icons.history),
+                      const SizedBox(width: 30.0),
                       SizedBox(
-                        width: 1.sw- 150.0,
+                        width: 1.sw - 180.0,
                         child: Text(
                           searchHistory.elementAt(search),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       const SizedBox(width: 20.0),
-                    const  RotationTransition(
+                      const RotationTransition(
                         turns: AlwaysStoppedAnimation(45 / 360),
                         child: Icon(Icons.arrow_back),
                       )
